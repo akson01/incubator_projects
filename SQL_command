@@ -1,0 +1,1 @@
+SELECT CODEDESC, averagescore, error, many from (SELECT cuisinecode as cuisinecode1, avg(score) as averagescore, stdev(score)/sqrt(count(score)) as error,count(violcode) as many FROM grades group by cuisinecode having count(violcode) >= 100) as question4, cuisines where question4.cuisinecode1=cuisines.CUISINECODE order by averagescore;
